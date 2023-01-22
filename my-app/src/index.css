@@ -52,6 +52,9 @@ html {
   overflow-y: scroll;
 }
 
+p {
+  margin: 1rem;
+}
 
 /* NAVBAR */
 .mynavbar {
