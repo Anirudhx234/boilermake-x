@@ -9,7 +9,7 @@ app.use(express.json());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "r!RqJ34V6rkD2ZT",
+  password: "",
   port: 4306,
   database: "testify"
 });
