@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 const NewQuestion = () => {
@@ -146,9 +147,11 @@ const NewQuestion = () => {
             <ReactCrop src={fileContents} onImageLoaded={setImage}
               crop={crop} onChange={setCrop} />}
         </div>
+        <div className="line"/>
         <div className="addquestionoptionlist">
-          <button onClick={postQuestion} >Post Question</button>
           <div className="tagadder">
+          <Button variant="outline-success" onClick={postQuestion}>Upload Question</Button>
+          <div className="line"/>
             <div className="choosetagforaddquestion">
               <input type="text" placeholder="Tag Search" value={text} onChange={e => textEditted(e.target.value)} />
               {!itemSelected && text.length != 0 && (<div className="addquestiontagslist">
@@ -161,9 +164,10 @@ const NewQuestion = () => {
                   ))}
                 </Dropdown.Menu>
               </div>)}
+
             </div>
-            <button onClick={addTag}>Add Tag</button>
-            <button onClick={removeTag}>Remove Tag</button>
+            <Button variant="outline-primary" onClick={addTag}>Add Tag</Button>
+            <Button variant="outline-danger" onClick={removeTag}>Remove Tag</Button>
           </div>
           <div className="addquestiontaglist">
             <textarea placeholder="Tags" value={(''+selectedTags)} readOnly={true} />

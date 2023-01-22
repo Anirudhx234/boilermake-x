@@ -3,6 +3,7 @@ import { ReactDOM } from "react";
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
+import ParticleBackground from "./components/background.js"
 
 const Home = () => {
 
