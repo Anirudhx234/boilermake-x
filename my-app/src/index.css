@@ -56,6 +56,42 @@ p {
   margin: 1rem;
 }
 
+/* New Question */
+.newquestion {
+  background-color: black;
+}
+
+.choosefiledialog {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 30px;
+  width: 90%;
+  background-color: white;
+  padding-top: 1rem;
+}
+
+.newquestionrow {
+  display: flex;
+  justify-content: center;
+}
+
+.dropzone {
+  border: dotted;
+  margin: 3rem;
+  margin-bottom: 5rem;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+  padding: 2rem;
+}
+
+.addquestion {
+  width: 100%;
+  padding: 1rem;
+}
+
 /* NAVBAR */
 .mynavbar {
   background-color: black;
