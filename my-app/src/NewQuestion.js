@@ -89,7 +89,7 @@ const NewQuestion = () => {
       }
     })
   }, [])
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const cropImageNow = () => {
     const canvas = document.createElement('canvas');
@@ -98,13 +98,13 @@ const NewQuestion = () => {
     canvas.width = crop.width;
     canvas.height = crop.height;
     const ctx = canvas.getContext('2d');
-  
+
     const pixelRatio = window.devicePixelRatio;
     canvas.width = crop.width * pixelRatio;
     canvas.height = crop.height * pixelRatio;
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.imageSmoothingQuality = 'high';
-  
+
     ctx.drawImage(
       image,
       crop.x * scaleX,
@@ -122,7 +122,7 @@ const NewQuestion = () => {
     return base64Image;
   }
 
-  return ( 
+  return (
     <div className="newquestion">
       {selectingImage && <div className="choosefiledialog">
         <div className="newquestionrow">
@@ -140,43 +140,43 @@ const NewQuestion = () => {
           </div>
         </div>
       </div>}
-      {!selectingImage && 
-      <div className="addquestion">
-        <div className="imagecropper">
-          {fileContents &&
-            <ReactCrop src={fileContents} onImageLoaded={setImage}
-              crop={crop} onChange={setCrop} />}
-        </div>
-        <div className="line"/>
-        <div className="addquestionoptionlist">
-          <div className="tagadder">
-          <Button variant="outline-success" onClick={postQuestion}>Upload Question</Button>
-          <div className="line"/>
-            <div className="choosetagforaddquestion">
-              <input type="text" placeholder="Tag Search" value={text} onChange={e => textEditted(e.target.value)} />
-              {!itemSelected && text.length != 0 && (<div className="addquestiontagslist">
-                <Dropdown.Menu className="addquestiontagdropdown" show>
-                  {tags.length == 0 && (
-                    <Dropdown.Item eventKey="No Results Found">No Results Found</Dropdown.Item>
-                  )}
-                  {tags.map((tag) => (
-                    <Dropdown.Item eventKey={tag} key={tag} onClick={() => itemClicked(tag)}>{tag}</Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </div>)}
-
+      {!selectingImage &&
+        <div className="addquestion">
+          <div className="imagecropper">
+            {fileContents &&
+              <ReactCrop src={fileContents} onImageLoaded={setImage}
+                crop={crop} onChange={setCrop} />}
+          </div>
+          <div className="line" />
+          <div className="addquestionoptionlist">
+            <div className="tagadder">
+              <div className="line" />
+              <div className="choosetagforaddquestion">
+                <input className="upload" type="text" placeholder="Tag Search" value={text} onChange={e => textEditted(e.target.value)} />
+                {!itemSelected && text.length != 0 && (<div className="addquestiontagslist">
+                  <Dropdown.Menu className="addquestiontagdropdown" show>
+                    {tags.length == 0 && (
+                      <Dropdown.Item eventKey="No Results Found">No Results Found</Dropdown.Item>
+                    )}
+                    {tags.map((tag) => (
+                      <Dropdown.Item eventKey={tag} key={tag} onClick={() => itemClicked(tag)}>{tag}</Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </div>)}
+              </div>
+              <Button className="upload" variant="primary" onClick={addTag}>Add Tag</Button>
+              <Button className="upload" variant="danger" onClick={removeTag}>Remove Tag</Button>
             </div>
-            <Button variant="outline-primary" onClick={addTag}>Add Tag</Button>
-            <Button variant="outline-danger" onClick={removeTag}>Remove Tag</Button>
-          </div>
-          <div className="addquestiontaglist">
-            <textarea placeholder="Tags" value={(''+selectedTags)} readOnly={true} />
+            <div className="line" />
+            <div className="addquestiontaglist">
+              <textarea placeholder="Tags" value={('' + selectedTags)} readOnly={true} />
+            </div>
+            <Button className="upload" variant="success" onClick={postQuestion}>Upload Question</Button>
           </div>
         </div>
-      </div>
       }
     </div>
-   );
+  );
 }
- 
+
 export default NewQuestion;

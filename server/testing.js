@@ -36,9 +36,11 @@ app.post('/retrieve', async (req, res) => {
     var sql = "SELECT * FROM images WHERE JSON_SEARCH(topic, 'one', '" + req.body.topic + "') IS NOT NULL";
     console.log(req.body.topic);
     var results = await con.promise().query(sql);
-    console.log(results[0][0].topic)
+    
     res.set('Content-Type', 'application/json');
-    res.json(results[0]);
+    if (results) {
+      res.json(results[0]);
+    }
 })
 
 app.listen(5000, () => {
