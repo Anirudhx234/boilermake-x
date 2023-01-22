@@ -46,7 +46,7 @@ const NewQuestion = () => {
       return;
     }
 
-    axios.post('https://localhost:5000/send', {
+    axios.post('http://localhost:5000/send', {
       image_url: output,
       topics: selectedTags
     }, {
